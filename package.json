@@ -1,0 +1,22 @@
+{
+  "name": "accordion-full",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "concurrently \"npm --prefix server install\" \"npm --prefix client install\"",
+    "start": "node server/index.js",
+    "backend": "npm run dev --prefix server",
+    "frontend": "npm run start --prefix client",
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "build:front": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "build": "concurrently \"npm run build:server\" \"npm run build:front\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.4.0",
+    "nodemon": "^2.0.20"
+  }
+}
