@@ -16,14 +16,31 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
-      },
-      {
         test: /\.tsx?$/,
-        use: "ts-loader",
         exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                "@babel/preset-typescript",
+                "@babel/preset-react",
+                "@babel/preset-env",
+              ],
+              plugins: [
+                "@babel/plugin-transform-runtime",
+                "babel-plugin-macros",
+                [
+                  "babel-plugin-styled-components",
+                  {
+                    fileName: false,
+                    pure: true,
+                  },// https://styled-components.com/docs/tooling
+                ]
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.css$/i,

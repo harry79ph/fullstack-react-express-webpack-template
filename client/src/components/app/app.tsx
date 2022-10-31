@@ -1,4 +1,7 @@
 import React from "react";
+import { ThemeProvider } from "styled-components";
+import Child1 from "../child1/child1";
+import { AppReset } from "./app.styles";
 
 function App() {
   
@@ -20,7 +23,18 @@ function App() {
     })();
   }, []);
 
-  return <div>App component</div>;
+  const theme = {
+    colors: {
+      main: '#fff',
+    },
+  }
+
+  return (
+    <ThemeProvider theme={theme}>
+      <AppReset />
+      <Child1 />
+    </ThemeProvider>
+  );
 }
 
 export default App;
