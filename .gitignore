@@ -3,4 +3,5 @@ node_modules/
 build/
 .cache/
 .DS_Store
+.env
 env.ts
